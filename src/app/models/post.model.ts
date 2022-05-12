@@ -1,4 +1,4 @@
-export interface IPost{
+export interface PostModel {
   userId: number,
   id: number,
   title: string,

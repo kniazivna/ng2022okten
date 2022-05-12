@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
-import { IUser } from "../models";
+import { UserModel } from "../models";
 import { urls } from "../constants";
 
 
@@ -13,8 +13,8 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<IUser[]> {
+  getAll(): Observable<UserModel[]> {
     return this.http
-      .get<IUser[]>(urls.users);
+      .get<UserModel[]>(urls.users);
   }
 }

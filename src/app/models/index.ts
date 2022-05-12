@@ -1,3 +1,3 @@
-export * from './IComment';
-export * from './IPost';
-export * from './IUser';
+export * from './comment.model';
+export * from './post.model';
+export * from './user.model';

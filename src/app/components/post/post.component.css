@@ -1,0 +1,5 @@
+.post:hover{
+  background-color: var(--light);
+  color: var(--dark);
+  transition: 1s ease-in;
+}

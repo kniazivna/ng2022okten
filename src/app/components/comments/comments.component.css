@@ -1,0 +1,15 @@
+.comments{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: var(--light);
+  color: var(--dark);
+}
+
+.comments-item{
+  width: 18%;
+  padding: 10px;
+  margin: 15px;
+}
+
+

@@ -1,0 +1,15 @@
+.posts{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: var(--dark);
+  color: var(--light);
+}
+
+.post-item{
+  width: 18%;
+  padding: 10px;
+  margin: 15px;
+}
+
+
