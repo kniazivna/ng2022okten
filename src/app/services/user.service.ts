@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {IUser} from "../models/IUser";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+
+import { IUser } from "../models";
+import { urls } from "../constants";
 
 
 @Injectable({
@@ -9,17 +11,10 @@ import {IUser} from "../models/IUser";
 })
 export class UserService {
 
-  private url = 'https://jsonplaceholder.typicode.com/users';
-
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<IUser[]> {
+  getAll(): Observable<IUser[]> {
     return this.http
-      .get<IUser[]>(this.url);
-  }
-
-  getUser(id:number): Observable<IUser> {
-    return this.http
-      .get<IUser>(this.url + '/' + 'id');
+      .get<IUser[]>(urls.users);
   }
 }
