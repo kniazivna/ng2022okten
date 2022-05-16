@@ -1,0 +1,17 @@
+ul{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: cadetblue;
+  padding: 20px 0;
+}
+
+a{
+  text-decoration: none;
+  color: aquamarine;
+}
+
+a:hover{
+  color: azure;
+}
+

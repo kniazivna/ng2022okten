@@ -1,1 +1,28 @@
-<p>user-details works!</p>
+<ul class="user">
+  <li>{{user.id}}) {{user.name}}</li>
+  <li>username: {{user.username}}</li>
+  <li>email: {{user.email}}</li>
+  <li>address:
+    <ul>
+      <li>street: {{user.address.street}}</li>
+      <li>suite: {{user.address.suite}}</li>
+      <li>city: {{user.address.city}}</li>
+      <li>zipcode: {{user.address.zipcode}}</li>
+      <li>geo:
+        <ul>
+          <li>lat: {{user.address.geo.lat}}</li>
+          <li>lng: {{user.address.geo.lng}}</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>phone: {{user.phone}}</li>
+  <li>website: {{user.website}}</li>
+  <li>company:
+    <ul>
+      <li>name: {{user.company.name}}</li>
+      <li>catchPhrase: {{user.company.catchPhrase}}</li>
+      <li>bs: {{user.company.bs}}</li>
+    </ul>
+  </li>
+</ul>
