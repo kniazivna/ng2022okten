@@ -26,7 +26,9 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule
+    RouterModule.forRoot([
+
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
