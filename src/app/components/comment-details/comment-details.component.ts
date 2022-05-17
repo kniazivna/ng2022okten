@@ -1,6 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {IPost} from "../../interfaces/post.interface";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
+
 import {IComment} from "../../interfaces/comment.interface";
+
 
 @Component({
   selector: 'app-comment-details',
@@ -9,12 +11,29 @@ import {IComment} from "../../interfaces/comment.interface";
 })
 export class CommentDetailsComponent implements OnInit {
 
-  @Input()
-  comment:IComment;
+  commentDetails:IComment;
 
-  constructor() { }
+ /* constructor(private activatedRoute:ActivatedRoute,
+              private commentsService:CommentsService) {
+
+  }*/
+
+  constructor(private activatedRoute: ActivatedRoute,
+              private router: Router) {
+
+  }
 
   ngOnInit(): void {
+   /* //ddos
+    this.activatedRoute.params.subscribe(({id}) => {
+      this.commentsService.getById(+id).subscribe(value => this.commentDetails = value)
+    })*/
+
+    this.activatedRoute.params.subscribe(value => {
+      let {state: {data}} = history;
+      // щоб вказати якого типу мають бути дані
+      this.commentDetails = data as IComment;
+    })
   }
 
 }

@@ -1,3 +1,8 @@
-<div>
+<div class="single">
   ({{comment.id}}) {{comment.name}}
+
+  <!--  url based on father-->
+<!--  <div><a routerLink="details/{{comment.id}}">details</a></div>-->
+
+  <a [routerLink]="['details',comment.id]" [state]="{data:comment}">details</a>
 </div>

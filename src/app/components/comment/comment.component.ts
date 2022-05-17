@@ -10,7 +10,7 @@ import {IComment} from "../../interfaces/comment.interface";
 export class CommentComponent implements OnInit {
 
   @Input()
-  comment:IComment;
+  comment:Partial<IComment>;
 
   constructor() { }
 

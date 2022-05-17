@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 
-import { IUser } from "../../interfaces/user.interface";
+import {IUser} from "../../interfaces/user.interface";
 
 @Component({
   selector: 'app-user',
@@ -10,10 +10,11 @@ import { IUser } from "../../interfaces/user.interface";
 
 export class UserComponent implements OnInit {
 
-@Input()
-user:IUser
+  @Input()
+  user: Partial<IUser>
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

@@ -15,10 +15,31 @@ import { PostDetailsComponent } from './components/post-details/post-details.com
 import { CommentDetailsComponent } from './components/comment-details/comment-details.component';
 
 const routes:Route[] = [
-  {path: 'users', component: UserComponent, children: []},
-  {path: 'posts', component: PostComponent, children: []},
-  {path: 'comments', component: CommentComponent, children: []}
-];
+  {
+    path: 'users',
+    component: UsersComponent,
+    // users/details/:id
+    children: [
+      {path: 'details/:id', component: UserDetailsComponent}
+    ]
+  },
+  {
+    path: 'posts',
+    component: PostsComponent,
+    // posts/details/:id
+    children: [
+      {path: 'details/:id', component: PostDetailsComponent}
+    ]
+  },
+  {
+    path: 'comments',
+    component: CommentsComponent,
+    // comments/details/:id
+    children: [
+      {path: 'details/:id', component: CommentDetailsComponent}
+    ]
+  }
+]
 
 @NgModule({
   declarations: [
@@ -31,7 +52,7 @@ const routes:Route[] = [
     CommentComponent,
     UserDetailsComponent,
     PostDetailsComponent,
-    CommentDetailsComponent
+    CommentDetailsComponent,
   ],
   imports: [
     BrowserModule,

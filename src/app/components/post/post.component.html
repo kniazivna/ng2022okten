@@ -1,3 +1,8 @@
-<div>
+<div class="single">
   {{post.id}} - {{post.title}}
+
+  <!--  url based on father-->
+<!--  <div><a routerLink="details/{{post.id}}">details</a></div>-->
+
+  <a [routerLink]="['details',post.id]" [state]="{data:post}">details</a>
 </div>

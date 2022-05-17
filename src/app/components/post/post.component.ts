@@ -10,7 +10,7 @@ import {IPost} from "../../interfaces/post.interface";
 export class PostComponent implements OnInit {
 
   @Input()
-  post: IPost;
+  post: Partial<IPost>;
 
   constructor() { }
 

@@ -1,28 +1,29 @@
-<ul class="user">
-  <li>{{user.id}}) {{user.name}}</li>
-  <li>username: {{user.username}}</li>
-  <li>email: {{user.email}}</li>
+<ul class="details">
+  <li>{{userDetails.id}}) {{userDetails.name}}</li>
+  <li>username: {{userDetails.username}}</li>
+  <li>email: {{userDetails.email}}</li>
   <li>address:
     <ul>
-      <li>street: {{user.address.street}}</li>
-      <li>suite: {{user.address.suite}}</li>
-      <li>city: {{user.address.city}}</li>
-      <li>zipcode: {{user.address.zipcode}}</li>
+      <li>street: {{userDetails.address.street}}</li>
+      <li>suite: {{userDetails.address.suite}}</li>
+      <li>city: {{userDetails.address.city}}</li>
+      <li>zipcode: {{userDetails.address.zipcode}}</li>
       <li>geo:
         <ul>
-          <li>lat: {{user.address.geo.lat}}</li>
-          <li>lng: {{user.address.geo.lng}}</li>
+          <li>lat: {{userDetails.address.geo.lat}}</li>
+          <li>lng: {{userDetails.address.geo.lng}}</li>
         </ul>
       </li>
     </ul>
   </li>
-  <li>phone: {{user.phone}}</li>
-  <li>website: {{user.website}}</li>
+  <li>phone: {{userDetails.phone}}</li>
+  <li>website: {{userDetails.website}}</li>
   <li>company:
     <ul>
-      <li>name: {{user.company.name}}</li>
-      <li>catchPhrase: {{user.company.catchPhrase}}</li>
-      <li>bs: {{user.company.bs}}</li>
+      <li>name: {{userDetails.company.name}}</li>
+      <li>catchPhrase: {{userDetails.company.catchPhrase}}</li>
+      <li>bs: {{userDetails.company.bs}}</li>
     </ul>
   </li>
 </ul>
+

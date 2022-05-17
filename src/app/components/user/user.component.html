@@ -1,4 +1,14 @@
-<div>
+<div class="single">
   {{user.id}}) {{user.name}}
+
+  <!--  usrl based on father-->
+<!--  <div><a routerLink="details/{{user.id}}">details</a></div>-->
+
+  <div><a [routerLink]="['details',user.id]" [state]="{data:user}">details</a></div>
+
 </div>
+<!--<div routerLinkActive="active">-->
+<!--  {{user.id}}.) <a routerLink="{{user.id}}" [state]="{user}">{{user.name}}</a>-->
+<!--</div>-->
+
 
