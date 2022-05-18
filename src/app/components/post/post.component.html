@@ -1,8 +1,10 @@
-<div class="single">
-  {{post.id}} - {{post.title}}
+<div class="single" *ngIf="post">
+  <div>{{post.id}} - {{post.title}}</div>
 
   <!--  url based on father-->
 <!--  <div><a routerLink="details/{{post.id}}">details</a></div>-->
 
-  <a [routerLink]="['details',post.id]" [state]="{data:post}">details</a>
+  <div routerLinkActive="active">
+    <a [routerLink]="['details',post.id]" [state]="{data:post}">details</a>
+  </div>
 </div>

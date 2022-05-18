@@ -1,8 +1,9 @@
-<div class="single">
-  ({{comment.id}}) {{comment.name}}
+<div class="single" *ngIf="comment">
+  <div>({{comment.id}}) {{comment.name}}</div>
 
   <!--  url based on father-->
 <!--  <div><a routerLink="details/{{comment.id}}">details</a></div>-->
 
-  <a [routerLink]="['details',comment.id]" [state]="{data:comment}">details</a>
+<!--  <a [routerLink]="['details',comment.id]" [state]="{data:comment}">details</a>-->
+<button (click)="getDetails()">Details</button>
 </div>

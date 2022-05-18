@@ -18,7 +18,7 @@ export class CommentsService {
       .get<IComment[]>(urls.comments)
   }
 
-  getById(id:number):Observable<IComment> {
+  getById(id:string):Observable<IComment> {
     return this.httpClient
     .get<IComment>(urls.comments + '/' + id)
   }

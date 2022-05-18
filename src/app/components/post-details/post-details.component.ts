@@ -17,8 +17,13 @@ export class PostDetailsComponent implements OnInit {
                private postsService: PostsService) {
    }*/
 
+  // constructor(private activatedRoute: ActivatedRoute,
+  //             private router: Router) {
+  // }
+
   constructor(private activatedRoute: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private postService:PostsService) {
   }
 
   ngOnInit(): void {
@@ -27,10 +32,21 @@ export class PostDetailsComponent implements OnInit {
        this.postsService.getById(+id).subscribe(value => this.postDetails = value)
      })*/
 
-    this.activatedRoute.params.subscribe(value => {
+    /*this.activatedRoute.params.subscribe(value => {
       let {state: {data}} = history;
       // щоб вказати якого типу мають бути дані
       this.postDetails = data as IPost;
+    })*/
+
+    this.activatedRoute.params.subscribe(({id}) => {
+
+      const state = this.router.getCurrentNavigation()?.extras?.state?.['data'] as IPost;
+
+      if(state){
+        return this.postDetails = state;
+      }
+
+      return this.postService.getById(id).subscribe(value => this.postDetails = value);
     })
   }
 }

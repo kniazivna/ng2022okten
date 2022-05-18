@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 
 import {IComment} from "../../interfaces/comment.interface";
+import {CommentsService} from "../../services";
 
 
 @Component({
@@ -18,9 +19,13 @@ export class CommentDetailsComponent implements OnInit {
 
   }*/
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private router: Router) {
+  // constructor(private activatedRoute: ActivatedRoute,
+  //             private router: Router) {
+  // }
 
+  constructor(private activatedRoute:ActivatedRoute,
+              private router:Router,
+              private commentService:CommentsService) {
   }
 
   ngOnInit(): void {
@@ -29,11 +34,23 @@ export class CommentDetailsComponent implements OnInit {
       this.commentsService.getById(+id).subscribe(value => this.commentDetails = value)
     })*/
 
-    this.activatedRoute.params.subscribe(value => {
+    /*this.activatedRoute.params.subscribe(value => {
       let {state: {data}} = history;
       // щоб вказати якого типу мають бути дані
       this.commentDetails = data as IComment;
-    })
+    })*/
+
+    //варіант з кнопкою
+this.activatedRoute.params.subscribe(({id}) => {
+  const state = this.router.getCurrentNavigation()?.extras?.state?.['data'] as IComment;
+
+  if(state){
+    return this.commentDetails = state;
+  }
+
+  return this.commentService.getById(id).subscribe(value => this.commentDetails = value)
+
+})
   }
 
 }

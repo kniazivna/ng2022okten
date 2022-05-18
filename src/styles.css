@@ -8,6 +8,7 @@
   font-size: 1em;
   font-weight: normal;
   line-height: 20px;
+  text-decoration: none;
 }
 
 body{
@@ -25,4 +26,13 @@ body{
 .details{
   margin: 1% 20%;
 }
+
+a{
+  color: cadetblue;
+}
+
+.active a{
+  color: aquamarine;
+}
+
 
