@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PostsRoutingModule } from './posts-routing.module';
 import { PostsComponent } from './posts-components/posts/posts.component';
+import {PostsService} from "./post-services/posts.service";
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { PostsComponent } from './posts-components/posts/posts.component';
   imports: [
     CommonModule,
     PostsRoutingModule
-  ]
+  ],
+  providers: [PostsService],
 })
 export class PostsModule { }
