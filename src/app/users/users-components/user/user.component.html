@@ -1,4 +1,9 @@
-<div >
-  {{user.id}} -- {{user.name}}
-  <a [routerLink]="[user.id]" [state] = "{user}">details</a>
+<div class="single" *ngIf="user">
+
+  <div>{{user.id}}) {{user.name}}</div>
+
+  <div routerLinkActive="active">
+    <a [routerLink]="[user.id]" [state]="{user}">details</a>
+  </div>
+
 </div>
