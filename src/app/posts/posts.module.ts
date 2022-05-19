@@ -6,6 +6,7 @@ import { PostsComponent } from './posts-components/posts/posts.component';
 import {PostsService} from "./post-services/posts.service";
 import { PostComponent } from './posts-components/post/post.component';
 import { PostDetailsComponent } from './posts-components/post-details/post-details.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { PostDetailsComponent } from './posts-components/post-details/post-detai
   ],
   imports: [
     CommonModule,
-    PostsRoutingModule
+    PostsRoutingModule,
+    HttpClientModule,
   ],
   providers: [PostsService],
 })

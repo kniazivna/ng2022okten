@@ -1,0 +1,11 @@
+button{
+  border: 1px cadetblue solid;
+  border-radius: 7px;
+  color: cadetblue;
+  padding: .5%;
+}
+
+button:hover{
+  background-color: cadetblue;
+  color: aquamarine;
+}
