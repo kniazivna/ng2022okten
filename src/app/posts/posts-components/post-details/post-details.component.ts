@@ -12,13 +12,14 @@ export class PostDetailsComponent implements OnInit {
 
   postDetails: IPost;
 
-  constructor(private postsService:PostsService,
+  constructor(/*private postsService:PostsService,
               private router:Router,
+              private activatedRoute:ActivatedRoute*/
               private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    this.activatedRoute.params.subscribe(({id}) => {
+    /*this.activatedRoute.params.subscribe(({id}) => {
       let state = this.router.getCurrentNavigation()?.extras?.state?.['post'] as IPost;
 
       if(state){
@@ -27,7 +28,10 @@ export class PostDetailsComponent implements OnInit {
 
       return this.postsService.getById(id).subscribe(value => this.postDetails = value);
 
-    })
+    })*/
+
+    this.activatedRoute.data.subscribe(({postData}) => this.postDetails = postData);
+
   }
 
 }

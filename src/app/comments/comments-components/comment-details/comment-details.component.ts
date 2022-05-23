@@ -12,13 +12,14 @@ export class CommentDetailsComponent implements OnInit {
 
   commentDetails: IComment;
 
-  constructor(private activatedRoute:ActivatedRoute,
+  constructor(/*private activatedRoute:ActivatedRoute,
               private router:Router,
-              private commentService:CommentsService) { }
+              private commentService:CommentsService*/
+  private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    this.activatedRoute.params.subscribe(({id}) => {
+    /*this.activatedRoute.params.subscribe(({id}) => {
       const state = this.router.getCurrentNavigation()?.extras?.state?.['data'] as IComment;
 
       if(state){
@@ -26,8 +27,9 @@ export class CommentDetailsComponent implements OnInit {
       }
 
       return this.commentService.getById(id).subscribe(value => this.commentDetails = value)
-
-    })
+       })
+*/
+    this.activatedRoute.data.subscribe(({commentData}) => this.commentDetails = commentData);
   }
 
 }
