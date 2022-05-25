@@ -17,14 +17,14 @@ label{
   color: cadetblue;
 }
 
-input[type="text"]{
+input{
   border: 1px solid cadetblue;
   border-radius: 8px;
   background: azure;
   color: cadetblue;
   padding: 5px 10px;
 }
-input[type="text"]:focus{
+input:focus{
   background-color: cadetblue;
   color: azure;
   font-weight: bold;
@@ -40,6 +40,7 @@ button{
   background-color: azure;
   display: block;
   margin-left: auto;
+  outline: none;
 }
 
 button:hover{
@@ -47,6 +48,16 @@ button:hover{
   border: 1px solid azure;
   background-color: cadetblue;
   font-weight: bold;
+}
+
+button:disabled{
+  color: darkgray;
+  border: 1px solid darkgray;
+  background-color: azure;
+}
+
+.error{
+  color: red;
 }
 
 

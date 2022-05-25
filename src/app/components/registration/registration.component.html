@@ -1,15 +1,18 @@
 <form [formGroup]="form">
   <div class="field">
     <div><label>Username:</label></div>
-    <div><input type="text" formControlName="userName"></div>
+    <div><input type="text" formControlName="username"></div>
   </div>
+  <span *ngIf="usernameError" class="error">{{usernameError}}</span>
   <div class="field">
     <div><label>Password:</label></div>
-    <div><input type="text" formControlName="password"></div>
+    <div><input type="password" formControlName="password"></div>
   </div>
   <div class="field">
     <div><label>Confirm password:</label></div>
-    <div><input type="text" formControlName="confirmPassword"></div>
+    <div><input type="password" formControlName="confirmPassword"></div>
+    <span *ngIf="form.errors" class="error">{{form.errors['notSame']}}</span>
   </div>
-<button>Submit</button>
+
+<button [disabled]="form.invalid" (click)="registration()">Submit</button>
 </form>
