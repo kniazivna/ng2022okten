@@ -1,0 +1,19 @@
+ul{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: cadetblue;
+  padding: 20px 10%;
+}
+
+a{
+  color: aquamarine;
+}
+
+a:hover{
+  color: azure;
+}
+
+.active a{
+  color: azure;
+}

@@ -1,0 +1,56 @@
+form {
+  max-width: 30%;
+  margin: 50px auto;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.field:not(:last-child) {
+  margin-bottom: 20px;
+}
+label{
+  color: cadetblue;
+}
+
+input[type="text"]{
+  border: 1px solid cadetblue;
+  border-radius: 8px;
+  background: azure;
+  color: cadetblue;
+  padding: 5px 10px;
+}
+input[type="text"]:focus{
+  background-color: cadetblue;
+  color: azure;
+  font-weight: bold;
+  border: none;
+  outline: none;
+}
+
+button{
+  padding: 5px 10px;
+  color: cadetblue;
+  border: 1px solid cadetblue;
+  border-radius: 8px;
+  background-color: azure;
+  display: block;
+  margin-left: auto;
+}
+
+button:hover{
+  color: azure;
+  border: 1px solid azure;
+  background-color: cadetblue;
+  font-weight: bold;
+}
+
+
+
+
+
+
