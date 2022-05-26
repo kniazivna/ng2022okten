@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {IUser} from "../interfaces";
+import {IToken, IUser} from "../interfaces";
 import {Observable} from "rxjs";
 
 import {urls} from "../constants";
@@ -10,9 +10,24 @@ import {urls} from "../constants";
 })
 export class AuthService {
 
-  constructor(private httpClient:HttpClient) { }
+  private accessTokenKey = 'access';
 
-  registration(user:IUser):Observable<IUser> {
-    return this.httpClient.post<IUser>(urls.users, user)
+  constructor(private httpClient: HttpClient) {
+  }
+
+  registration(user: IUser): Observable<IUser> {
+    return this.httpClient.post<IUser>(urls.users, user);
+  }
+
+  login(user: IUser): Observable<IToken> {
+    return this.httpClient.post<IToken>(urls.auth, user);
+  }
+
+  setToken(token:IToken): void {
+    localStorage.setItem(this.accessTokenKey, token.access);
+  }
+
+  isAuthorization(): boolean {
+    return !!localStorage.getItem(this.accessTokenKey);
   }
 }

@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../../services";
+import {Router} from "@angular/router";
+import {urls} from "../../constants";
 
 @Component({
   selector: 'app-login',
@@ -7,9 +11,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+
+  constructor(private authService: AuthService, private router: Router) {
+    this._createForm();
+  }
 
   ngOnInit(): void {
   }
 
+  _createForm(): void {
+
+    this.form = new FormGroup({
+      username: new FormControl(null),
+      password: new FormControl(null),
+    })
+  }
+
+  login(): void {
+
+    this.authService.login(this.form.getRawValue()).subscribe(value => {
+      this.authService.setToken(value)
+      this.router.navigate(['cars'])
+    })
+  }
 }
