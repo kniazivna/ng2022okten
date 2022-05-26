@@ -14,7 +14,7 @@ export class RegistrationComponent implements OnInit {
   form: FormGroup;
   usernameError: string;
 
-  constructor(private authService:AuthService, private router:Router) {
+  constructor(private authService: AuthService, private router: Router) {
     this._createForm()
   }
 
@@ -25,14 +25,14 @@ export class RegistrationComponent implements OnInit {
   _createForm(): void {
 
     this.form = new FormGroup({
-      //що вказано в інпуті
-      username: new FormControl(null,
-        [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
-      password: new FormControl(null,
-        [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
-      confirmPassword: new FormControl(null,
-        [Validators.required, Validators.minLength(3), Validators.maxLength(15)])
-    },
+        //що вказано в інпуті
+        username: new FormControl(null,
+          [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
+        password: new FormControl(null,
+          [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
+        confirmPassword: new FormControl(null,
+          [Validators.required, Validators.minLength(3), Validators.maxLength(15)])
+      },
       [this._checkPassword])
   }
 
@@ -42,10 +42,13 @@ export class RegistrationComponent implements OnInit {
 
     delete rawValue.confirmPassword;
 
-    this.authService.registration(rawValue).subscribe(
-      () => this.router.navigate(['login']),
-      e => this.usernameError = e.error.username[0]
-      )
+    this.authService.registration(rawValue).subscribe({
+        next: () => {
+          this.router.navigate(['login'])
+        },
+        error: e => this.usernameError = e.error.username[0]
+      }
+    )
   }
 
   //null повертає, якщо помилок нема
@@ -54,6 +57,6 @@ export class RegistrationComponent implements OnInit {
     const password = form.get('password');
     const confirmPassword = form.get('confirmPassword');
 
-    return password?.value === confirmPassword?.value ? null: {notSame:true}
+    return password?.value === confirmPassword?.value ? null : {notSame: true}
   }
 }

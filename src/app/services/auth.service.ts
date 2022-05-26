@@ -27,6 +27,14 @@ export class AuthService {
     localStorage.setItem(this.accessTokenKey, token.access);
   }
 
+  getToken(): string {
+    return localStorage.getItem(this.accessTokenKey) as string;
+  }
+
+  deleteToken():void {
+    localStorage.removeItem(this.accessTokenKey)
+  }
+
   isAuthorization(): boolean {
     return !!localStorage.getItem(this.accessTokenKey);
   }

@@ -1,23 +1,22 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { CarsComponent } from './components/cars/cars.component';
-import { CarComponent } from './components/car/car.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { HeaderComponent } from './components/header/header.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {ReactiveFormsModule} from "@angular/forms";
+import {MainInterceptor} from "./main.interceptor";
 
 @NgModule({
   declarations: [
     AppComponent,
     MainLayoutComponent,
     CarsComponent,
-    CarComponent,
     LoginComponent,
     RegistrationComponent,
     HeaderComponent
@@ -28,7 +27,13 @@ import {ReactiveFormsModule} from "@angular/forms";
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: MainInterceptor
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
