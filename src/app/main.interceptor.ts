@@ -44,4 +44,8 @@ return throwError(() => new Error('token invalid or expired'))
     })
   }
 
+  handle401Error(request:HttpRequest<any>, next:HttpHandler): Observable<HttpEvent<unknown>> {
+this.authService.isAuthorization()
+  }
+
 }
