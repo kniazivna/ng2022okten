@@ -15,6 +15,7 @@ import {IToken} from "./interfaces";
 
 @Injectable()
 export class MainInterceptor implements HttpInterceptor {
+  isRefreshing = false;
 
   constructor(private authService: AuthService, private router: Router) {
   }
@@ -35,11 +36,11 @@ export class MainInterceptor implements HttpInterceptor {
           this.router.navigate(['login'])*/
 
           //тут варіант з refresh токеном
-          this.handle401Error(request, next)
+          return this.handle401Error(request, next)
         }
-return throwError(() => new Error('token invalid or expired'))
+        return throwError(() => new Error('token invalid or expired'))
       })
-    );
+    ) as any;
   }
 
   addToken(request: HttpRequest<any>, token: string): HttpRequest<any> {
@@ -49,12 +50,22 @@ return throwError(() => new Error('token invalid or expired'))
     })
   }
 
-  handle401Error(request:HttpRequest<any>, next:HttpHandler): any {
-this.authService.refresh().pipe(
-  switchMap((tokens: IToken) => {
-    return next.handle(this.addToken(request, tokens.access))
-  } )
-)
+  handle401Error(request: HttpRequest<any>, next: HttpHandler): any {
+
+    if (!this.isRefreshing) {
+      this.isRefreshing = true;
+      return this.authService.refresh().pipe(
+        switchMap((tokens: IToken) => {
+          return next.handle(this.addToken(request, tokens.access))
+        }),
+        catchError(() => {
+          this.isRefreshing = false;
+          this.authService.deleteToken();
+          this.router.navigate(['login']);
+          return throwError(() => new Error('token invalid or expired'));
+        })
+      )
+    }
   }
 
 }

@@ -28,7 +28,9 @@ export class AuthService {
     const refreshToken = this.getRefreshToken();
     console.log(refreshToken);
     return  this.httpClient.post<IToken>(`${urls.auth}/refresh`, {refreshToken}).pipe(
-      tap
+      tap((tokens:IToken) => {
+        this.setToken(tokens)
+      })
     )
   }
 
