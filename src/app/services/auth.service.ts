@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {IToken, IUser} from "../interfaces";
 import {Observable, tap} from "rxjs";
 
 import {urls} from "../constants";
+import {IToken, IUser} from "../interfaces";
 
 @Injectable({
   providedIn: 'root'
